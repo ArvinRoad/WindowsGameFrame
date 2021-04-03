@@ -20,8 +20,6 @@ int WINAPI WinMain(
 	//‘›Õ£3√Î SDL_Delay(3000);
 
 	runGame();
-	
-	uninitGameModule();
 
 	return 0;
 }

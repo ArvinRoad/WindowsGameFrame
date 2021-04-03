@@ -1,15 +1,24 @@
 #include"sgfgame.h"
 #include"SDL.h"
 #include<Windows.h>
+#include"interface.h"
 
 SDL_Window* window = NULL;
 
 void uninitGameModule(){
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+
+	uninitGame();
 }
 
 int initGameModule() {
+
+	if (initGame() < 0) {
+		uninitGame();
+		return -1;
+	}
+
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow(
 		"An SDL2 window",
@@ -41,4 +50,5 @@ void runGame() {
 			//TODO
 		}
 	}
+	uninitGameModule();
 }

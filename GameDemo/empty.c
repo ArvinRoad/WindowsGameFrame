@@ -14,12 +14,12 @@ int initGame(UserModule* pModule) {
 }
 
 //反初始化
-void uninitGame() {
+void uninitGame(const SystemModule* pModule) {
 	SDL_Log("uninitGame()");
 }
 
 //资源加载
-int loadGameResource() {
+int loadGameResource(const SystemModule* pModule) {
 	SDL_Log("loadGameResource()");
 	return 0;
 }
@@ -30,7 +30,7 @@ void processGameEvent(const SDL_Event* event) {
 }
 
 //游戏更新函数(写入)
-int updateGame() {
+int updateGame(const SystemModule* pModule) {
 	SDL_Log("updateGame()");
 	return 0;
 }

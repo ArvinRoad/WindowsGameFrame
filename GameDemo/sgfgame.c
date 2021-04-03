@@ -3,7 +3,7 @@
 
 
 static void uninitGameModule(SystemModule* sys){
-	uninitGame();
+	uninitGame(sys);
 
 	if (sys != NULL && sys->renderer) {
 		SDL_DestroyRenderer(sys->renderer);
@@ -29,10 +29,12 @@ SystemModule* initGameModule() {
 		return NULL;
 	}
 
+	memset(pSys, 0, sizeof(SystemModule));
+
 	UserModule userGame = { 0 };
 
 	if (initGame(&userGame) < 0) {
-		uninitGame();
+		uninitGameModule(pSys);
 		return NULL;
 	}
 
@@ -51,12 +53,12 @@ SystemModule* initGameModule() {
 
 	pSys->renderer = SDL_CreateRenderer(pSys->window, -1, SDL_RENDERER_ACCELERATED);
 	if (!pSys->renderer) {
-		uninitGame();
+		uninitGameModule(pSys);
 		return NULL;
 	}
 
-	if (loadGameResource() < 0) {
-		uninitGame();
+	if (loadGameResource(pSys) < 0) {
+		uninitGameModule(pSys);
 		return NULL;
 	}
 	return pSys;
@@ -75,7 +77,7 @@ void runGame(SystemModule* sys) {
 		}
 		else{
 			//¸üÐÂ
-			if (updateGame() < 0)
+			if (updateGame(sys) < 0)
 				break;
 
 			//ÓÎÏ·äÖÈ¾

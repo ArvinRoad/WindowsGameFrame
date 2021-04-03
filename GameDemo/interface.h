@@ -23,17 +23,17 @@ typedef struct SystemModule {
 int initGame(UserModule* pModule);
 
 //反初始化
-void uninitGame();
+void uninitGame(const SystemModule* pModule);
 
 //资源加载
-int loadGameResource();
+int loadGameResource(const SystemModule* pModule);
 
 //事件响应
 void processGameEvent(const SDL_Event* event);
 
 //游戏更新函数(写入)
 // < 0 ,退出; = 0 ， 继续;
-int updateGame();
+int updateGame(const SystemModule* pModule);
 
 //游戏渲染函数(只读)
 void renderGame(const SystemModule* pModule);

@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="empty.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="sgfgame.c" />
   </ItemGroup>

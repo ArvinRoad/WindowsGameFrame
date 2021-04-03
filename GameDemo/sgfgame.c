@@ -42,8 +42,7 @@ void runGame() {
 				break;
 			}
 			else {
-				//TODO
-
+				processGameEvent(&event);
 			}
 		}
 		else{

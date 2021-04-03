@@ -25,8 +25,8 @@ int loadGameResource() {
 }
 
 //事件响应
-void processGameEvent() {
-	SDL_Log("processGameEvent()");
+void processGameEvent(const SDL_Event* event) {
+	SDL_Log("processGameEvent()",event->type);
 }
 
 //游戏更新函数(写入)

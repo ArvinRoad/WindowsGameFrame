@@ -23,7 +23,7 @@ void uninitGame();
 int loadGameResource();
 
 //事件响应
-void processGameEvent();
+void processGameEvent(const SDL_Event* event);
 
 //游戏更新函数(写入)
 // < 0 ,退出; = 0 ， 继续;

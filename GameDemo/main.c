@@ -12,14 +12,14 @@ int WINAPI WinMain(
 ) 
 {
 	//³õÊ¼»¯ÓÎÏ·¿ò¼Ü
-	int ret = initGameModule();
-	if (ret < 0) {
+	SystemModule* pModule =  initGameModule();
+	if (!pModule) {
 		return -1;
 	}
 
 	//ÔİÍ£3Ãë SDL_Delay(3000);
 
-	runGame();
+	runGame(pModule);
 
 	return 0;
 }

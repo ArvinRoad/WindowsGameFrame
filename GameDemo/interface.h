@@ -11,6 +11,12 @@ typedef struct UserModule {
 	Uint32 style;					//视口样式
 }UserModule;
 
+//框架 -> 游戏
+typedef struct SystemModule {
+	SDL_Window* window;				//视口
+	SDL_Renderer* renderer;			//渲染
+}SystemModule;
+
 
 //初始化游戏
 // < 0 ,初始化失败，框架直接退出; = 0 ，继续运行
@@ -30,4 +36,4 @@ void processGameEvent(const SDL_Event* event);
 int updateGame();
 
 //游戏渲染函数(只读)
-void renderGame();
+void renderGame(const SystemModule* pModule);

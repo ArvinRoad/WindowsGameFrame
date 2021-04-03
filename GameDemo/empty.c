@@ -26,7 +26,7 @@ int loadGameResource() {
 
 //事件响应
 void processGameEvent(const SDL_Event* event) {
-	SDL_Log("processGameEvent()",event->type);
+	SDL_Log("processGameEvent() %d",event->type);
 }
 
 //游戏更新函数(写入)
@@ -36,6 +36,10 @@ int updateGame() {
 }
 
 //游戏渲染函数(只读)
-void renderGame() {
+void renderGame(const SystemModule* pModule) {
+	SDL_Rect rt = { 10,10,200,200 };
+	SDL_SetRenderDrawColor(pModule->renderer, 255, 0, 0, 0);
+	SDL_RenderDrawRect(pModule->renderer, &rt);
+	SDL_SetRenderDrawColor(pModule->renderer, 0, 0, 0, 0);
 	SDL_Log("renderGame()");
 }

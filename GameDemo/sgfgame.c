@@ -1,6 +1,4 @@
 #include"sgfgame.h"
-#include"SDL.h"
-#include<Windows.h>
 #include"interface.h"
 
 SDL_Window* window = NULL;
@@ -14,19 +12,21 @@ void uninitGameModule(){
 
 int initGameModule() {
 
-	if (initGame() < 0) {
+	UserModule userGame = { 0 };
+
+	if (initGame(&userGame) < 0) {
 		uninitGame();
 		return -1;
 	}
 
 	SDL_Init(SDL_INIT_EVERYTHING);
 	window = SDL_CreateWindow(
-		"An SDL2 window",
-		SDL_WINDOWPOS_UNDEFINED,
-		SDL_WINDOWPOS_UNDEFINED,
-		640,
-		480,
-		SDL_WINDOW_OPENGL
+		userGame.title,
+		SDL_WINDOWPOS_CENTERED,
+		SDL_WINDOWPOS_CENTERED,
+		userGame.winSize.cx,
+		userGame.winSize.cy,
+		userGame.style
 	);
 	if (!window) {
 		return -1;

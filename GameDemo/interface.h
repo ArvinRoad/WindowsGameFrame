@@ -1,8 +1,20 @@
 #pragma once
 
+#include<Windows.h>
+#include"SDL.h"
+
+#define TITLE_MAX_LEN 512
+//用户输入数据
+typedef struct UserModule {
+	char title[TITLE_MAX_LEN];		//视口标题
+	SIZE winSize;					//视口大小
+	Uint32 style;					//视口样式
+}UserModule;
+
+
 //初始化游戏
 // < 0 ,初始化失败，框架直接退出; = 0 ，继续运行
-int initGame();
+int initGame(UserModule* pModule);
 
 //反初始化
 void uninitGame();
